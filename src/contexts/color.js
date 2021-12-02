@@ -1,32 +1,31 @@
-// import React, { createContext, useState } from 'react';
+import React, { createContext, useState } from 'react';
 
-// const ColorContext = createContext({
-//   state: { color: 'black', subcolor: 'red' },
-//   actions: {
-//     setColor: () => {},
-//     setSubcolor: () => {},
-//   },
-// });
+const ColorContext = createContext({
+  state: { color: 'black', subcolor: 'red' },
+  actions: {
+    setColor: () => {},
+    setSubcolor: () => {},
+  },
+});
 
-// const ColorProvider = ({ childeren }) => {
-//   const [color, setColor] = useState('black');
-//   const [subcolor, setSubcolor] = useState('red');
+const ColorProvider = ({ children }) => {
+  const [color, setColor] = useState('black');
+  const [subcolor, setSubcolor] = useState('red');
 
-//   const value = {
-//     state: { color, subcolor },
-//     actions: { setColor, setSubcolor },
-//   };
-//   return (
-//     <ColorContext.Provider value={value}>{childeren}</ColorContext.Provider>
-//   );
-// };
-// const { Consumer: Colorconsumer } = ColorContext;
-// export { ColorProvider, Colorconsumer };
+  const value = {
+    state: { color, subcolor },
+    actions: { setColor, setSubcolor },
+  };
+  return (
+    <ColorContext.Provider value={value}>{children}</ColorContext.Provider>
+  );
+};
 
-// export default ColorContext;
+// const ColorConsumer = ColorContext.Consumer과 같은 의미
+// const {Consumer: ColorConsumer} = ColorContext
+const ColorConsumer = ColorContext.Consumer;
 
-import { createContext } from 'react';
-
-const ColorContext = createContext({ color: 'black' });
+// ColorProvider와 ColorConsumer 내보내기
+export { ColorProvider, ColorConsumer };
 
 export default ColorContext;
